@@ -163,3 +163,204 @@ SYSTEM_PROMPT=You are a helpful and friendly assistant.
 ---
 
 ## 📁 Project Structure
+python-gpt-chatbot/
+│
+├── 📂 src/
+│   ├── 🐍 chatbot.py          # Core chatbot logic & OpenAI integration
+│   ├── 🐍 api.py              # FastAPI REST endpoints
+│   ├── 🐍 memory.py           # Conversation history management
+│   ├── 🐍 config.py           # Configuration & environment loader
+│   └── 🐍 utils.py            # Helper utilities & token counter
+│
+├── 📂 tests/
+│   ├── 🧪 test_chatbot.py     # Unit tests for core logic
+│   └── 🧪 test_api.py         # API endpoint tests
+│
+├── 📂 data/
+│   └── 📂 conversations/      # Saved conversation histories (JSON)
+│
+├── 📂 docs/
+│   └── 📄 api_reference.md    # API documentation
+│
+├── 🐍 main.py                 # Entry point — CLI chatbot
+├── 🐋 Dockerfile              # Docker image definition
+├── 🐋 docker-compose.yml      # Multi-service Docker setup
+├── 📄 requirements.txt        # Python dependencies
+├── 📄 .env.example            # Environment variable template
+├── 📄 .gitignore              # Git ignore rules
+└── 📄 README.md               # This file!
+
+---
+
+## 💻 Usage
+
+### 🖥️ CLI Mode
+
+Run the chatbot directly in your terminal:
+
+```bash
+python main.py
+```
+
+<div align="center">
+  <img src="https://images.unsplash.com/photo-1629654291663-b91ad427698f?w=900&h=350&fit=crop&q=80" alt="Terminal CLI" width="85%" style="border-radius: 12px; margin: 16px 0;"/>
+  <br/>
+  <em>Interactive CLI powered by the Rich library</em>
+</div>
+
+**Example session:**
+
+🤖 Python GPT Chatbot — Type 'quit' to exit, 'history' to view chat log
+You: Hello! Who are you?
+Assistant: Hi there! I'm your AI-powered assistant built with Python and GPT-4.
+How can I help you today?
+You: Explain recursion in Python.
+Assistant: Great question! Recursion is when a function calls itself...
+You: quit
+Goodbye! 👋
+
+### 🌐 API Mode
+
+Start the FastAPI server:
+
+```bash
+uvicorn src.api:app --reload --port 8000
+```
+
+Then open your browser at `http://localhost:8000/docs` for the interactive Swagger UI.
+
+**Send a message via API:**
+```bash
+curl -X POST "http://localhost:8000/chat" \
+     -H "Content-Type: application/json" \
+     -d '{"message": "What is machine learning?", "session_id": "user_001"}'
+```
+
+**Response:**
+```json
+{
+  "session_id": "user_001",
+  "response": "Machine learning is a branch of AI...",
+  "tokens_used": 142,
+  "model": "gpt-4o"
+}
+```
+
+### 🐳 Docker Mode
+
+```bash
+# Build and run with Docker Compose
+docker-compose up --build
+```
+
+---
+
+## 🔧 Configuration Options
+
+| Variable | Default | Description |
+|---|---|---|
+| `OPENAI_API_KEY` | *(required)* | Your OpenAI secret key |
+| `MODEL_NAME` | `gpt-4o` | GPT model to use |
+| `MAX_TOKENS` | `1000` | Max tokens per response |
+| `TEMPERATURE` | `0.7` | Creativity (0.0 = deterministic, 1.0 = creative) |
+| `SYSTEM_PROMPT` | *"You are a helpful assistant."* | Sets the chatbot's persona |
+| `MAX_HISTORY` | `20` | Max conversation turns to keep in memory |
+| `STREAM` | `true` | Enable/disable streaming responses |
+
+---
+
+## 🧪 Running Tests
+
+```bash
+# Run all tests
+pytest tests/ -v
+
+# Run with coverage report
+pytest tests/ --cov=src --cov-report=html
+```
+
+---
+
+## 📦 Dependencies
+
+All dependencies are listed in `requirements.txt`:
+openai>=1.0.0
+fastapi>=0.100.0
+uvicorn>=0.22.0
+pydantic>=2.0
+python-dotenv>=1.0.0
+rich>=13.0.0
+pytest>=7.0.0
+pytest-cov>=4.0.0
+httpx>=0.24.0
+
+Install them all at once:
+
+```bash
+pip install -r requirements.txt
+```
+
+---
+
+## 🗺️ Roadmap
+
+- [x] Core GPT chat integration
+- [x] Multi-turn conversation memory
+- [x] CLI interface with Rich
+- [x] FastAPI REST endpoints
+- [x] Streaming responses
+- [x] Docker support
+- [ ] Web UI (Streamlit / Gradio)
+- [ ] Plugin / tool-calling support
+- [ ] Voice input/output (Whisper + TTS)
+- [ ] RAG (Retrieval-Augmented Generation) support
+- [ ] Fine-tuning pipeline
+
+---
+
+## 🤝 Contributing
+
+Contributions are welcome! Here's how to get started:
+
+1. **Fork** the repository
+2. Create your feature branch: `git checkout -b feature/amazing-feature`
+3. Commit your changes: `git commit -m 'Add amazing feature'`
+4. Push to the branch: `git push origin feature/amazing-feature`
+5. Open a **Pull Request**
+
+Please make sure to:
+- Follow the existing code style
+- Add/update tests as needed
+- Update documentation where relevant
+
+---
+
+## 🔒 Security
+
+- **Never** commit your `.env` file or API keys to version control
+- `.gitignore` already excludes `.env` by default
+- Rotate your OpenAI API key if it is ever exposed
+- Consider rate-limiting your API endpoints in production
+
+---
+
+## 📄 License
+
+This project is licensed under the **MIT License** — see the [LICENSE](LICENSE) file for details.
+
+---
+
+## 💬 Support & Contact
+
+<div align="center">
+
+If you found this project helpful, please consider ⭐ **starring the repository** — it means a lot!
+
+[![GitHub Stars](https://img.shields.io/github/stars/yourusername/python-gpt-chatbot?style=social)](https://github.com/yourusername/python-gpt-chatbot)
+[![GitHub Forks](https://img.shields.io/github/forks/yourusername/python-gpt-chatbot?style=social)](https://github.com/yourusername/python-gpt-chatbot)
+
+Have a question? Open an [Issue](https://github.com/yourusername/python-gpt-chatbot/issues) or start a [Discussion](https://github.com/yourusername/python-gpt-chatbot/discussions).
+
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:0f0c29,50:302b63,100:24243e&height=100&section=footer" width="100%"/>
+
+</div>
