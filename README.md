@@ -97,3 +97,69 @@ Before you begin, ensure you have the following installed and configured:
 - **Internet**: Required for OpenAI API calls
 
 ### ✅ Software Requirements
+✔  Python        3.9 or higher
+✔  pip           Latest version
+✔  Git           2.x or higher
+✔  Docker        20.x+ (optional, for containerised deployment)
+✔  VS Code       Recommended editor
+### ✅ API & Accounts
+
+| Requirement | Where to Get It |
+|---|---|
+| 🔑 **OpenAI API Key** | [platform.openai.com](https://platform.openai.com/api-keys) |
+| 💳 **OpenAI Billing** | Add a payment method to your OpenAI account |
+| 🐙 **GitHub Account** | [github.com](https://github.com) (to fork/clone) |
+
+> **💡 Tip:** New OpenAI accounts often come with free credits — enough to get started immediately!
+
+---
+
+## 🚀 Installation
+
+### Step 1 — Clone the Repository
+
+```bash
+git clone https://github.com/yourusername/python-gpt-chatbot.git
+cd python-gpt-chatbot
+```
+
+### Step 2 — Create a Virtual Environment
+
+```bash
+# Create virtual environment
+python -m venv venv
+
+# Activate it
+# On macOS/Linux:
+source venv/bin/activate
+
+# On Windows:
+venv\Scripts\activate
+```
+
+### Step 3 — Install Dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+### Step 4 — Set Up Environment Variables
+
+```bash
+# Copy the example env file
+cp .env.example .env
+```
+
+Then open `.env` and fill in your details:
+
+```env
+OPENAI_API_KEY=sk-your-api-key-here
+MODEL_NAME=gpt-4o
+MAX_TOKENS=1000
+TEMPERATURE=0.7
+SYSTEM_PROMPT=You are a helpful and friendly assistant.
+```
+
+---
+
+## 📁 Project Structure
