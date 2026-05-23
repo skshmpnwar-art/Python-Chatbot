@@ -1,4 +1,4 @@
-<div align="center">
+
 
 <img src="https://capsule-render.vercel.app/api?type=waving&color=0:0f0c29,50:302b63,100:24243e&height=200&section=header&text=🤖%20Python%20GPT%20Chatbot&fontSize=42&fontColor=ffffff&fontAlignY=38&desc=An%20AI-powered%20conversational%20assistant%20built%20with%20Python%20%26%20OpenAI&descAlignY=58&descSize=16" alt="Header Banner" width="100%"/>
 
@@ -192,7 +192,6 @@ python-gpt-chatbot/
 
 ---
 
-## 💻 Usage
 
 ### 🖥️ CLI Mode
 
